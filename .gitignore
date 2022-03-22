@@ -1,0 +1,9 @@
+# Dependencies
+node_modules
+
+# IDE
+.idea
+
+# Misc
+.eslintrc.js
+.DS_Store*
