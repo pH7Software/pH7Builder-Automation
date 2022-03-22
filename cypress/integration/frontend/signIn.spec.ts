@@ -1,17 +1,18 @@
 import faker from 'faker';
+import RegistrationUser from '@lib/user/user.data';
 
-describe('SignIn', () => {
+describe('signIn', () => {
   const formElement = 'form#form_login_user';
 
   beforeEach(() => {
     cy.visit('login');
   });
 
-  describe('Unhappy Cases', () => {
+  describe('errors', () => {
     it(`must receive an error message when credentials aren't valid`, () => {
       cy.get('[name=mail]').type('doesntexist@ph7builder.com');
       cy.get('[name=password]').type('invalid password');
-      cy.get('form').submit();
+      cy.get(formElement).submit();
 
       // Check error messages
       cy.get(formElement).should('have.text', 'The following error was found');
@@ -25,7 +26,7 @@ describe('SignIn', () => {
     });
   });
 
-  describe('Happy Cases', () => {
+  describe('success', () => {
     const registeredUser = {
       email: faker.internet.email(),
       password: faker.internet.password(),
@@ -33,7 +34,7 @@ describe('SignIn', () => {
       nickname: faker.internet.userName()
     };
 
-    const createUser = (user) => {
+    const createUser = (user: RegistrationUser) => {
       cy.visit('signup');
 
       // Minimum step to create a user
@@ -41,8 +42,8 @@ describe('SignIn', () => {
       cy.get('[name=username]').type(user.nickname);
       cy.get('[name=mail]').type(user.email);
       cy.get('[name=password]').type(user.password);
-      cy.get('[name="terms[]"]').click();
-      cy.get('form').submit();
+      cy.get('[name="terms[]"]').check();
+      cy.get('form#form_join_user').submit();
     };
 
     beforeEach(() => {
@@ -52,7 +53,7 @@ describe('SignIn', () => {
     it(`must create an account`, () => {
       cy.get('[name=mail]').type(registeredUser.email);
       cy.get('[name=password]').type(registeredUser.password);
-      cy.get('form').submit();
+      cy.get(formElement).submit();
     });
   });
 })
