@@ -15,7 +15,7 @@ describe('signIn', () => {
       cy.get(formElement).submit();
 
       // Check error messages
-      cy.get(formElement).should('have.text', 'The following error was found');
+      cy.get(formElement).should('contain.text', 'The following error was found');
       cy.get(formElement).should('have.class', 'pfbc-error');
     });
 
@@ -54,6 +54,7 @@ describe('signIn', () => {
       cy.get('[name=mail]').type(registeredUser.email);
       cy.get('[name=password]').type(registeredUser.password);
       cy.get(formElement).submit();
+      cy.location().should('eq', 'user/account/index', {timeout: 2000});
     });
   });
 })

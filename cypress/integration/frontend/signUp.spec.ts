@@ -13,7 +13,7 @@ describe('signUp', () => {
   describe('success', () => {
     it('must signup a user on every registration step', () => {
       // Step 1
-      cy.get('#headings').should('have.text', 'Step 2/3');
+      cy.get('#headings').should('contain.text', 'Step 2/3');
 
       cy.get('[name=first_name]').type(faker.name.firstName());
       cy.get('[name=username]').type(faker.internet.userName());
@@ -23,7 +23,7 @@ describe('signUp', () => {
       cy.get(formStep1).submit();
 
       // Step 2
-      cy.get('#headings').should('have.text', 'Step 2/3');
+      cy.get('#headings').should('contain.text', 'Step 2/3');
 
       cy.get('[name=sex]').check('male');
       cy.get('[name=match_sex[]]').check(['female', 'male', 'couple']);
@@ -35,15 +35,16 @@ describe('signUp', () => {
 
       // Step 3
       const userDescription = faker.lorem.sentence();
-      cy.get('#headings').should('have.text', 'Step 3/3');
+      cy.get('#headings').should('contain.text', 'Step 3/3');
       cy.get('[name=description]').type(userDescription);
-      cy.get(`${formStep3} p span#str_description_rem_len`).should('have.text', userDescription.length() + ' character(s)');
+      cy.get(`${formStep3} p span#str_description_rem_len`).should('contain.text', userDescription.length() + ' character(s)');
       cy.get(formStep3).submit();
 
       // Step 4
       const fixtureFilename = 'avatar.jpg';
       cy.get('[name=avatar]').attachFile(fixtureFilename);
       cy.get(formStep4).submit();
+      cy.location().should('eq', 'user/signup/done', {timeout: 2000});
     });
   });
 });
