@@ -11,7 +11,7 @@ describe('signUp', () => {
   });
 
   describe('success', () => {
-    it('must signup a user on every registration step', () => {
+    it('must sign-up a user on every registration step', () => {
       // Step 1
       cy.get('#headings').should('contain.text', 'Step 2/3');
 
@@ -44,7 +44,12 @@ describe('signUp', () => {
       const fixtureFilename = 'avatar.jpg';
       cy.get('[name=avatar]').attachFile(fixtureFilename);
       cy.get(formStep4).submit();
+
+      // Check expected redirection
       cy.location().should('eq', 'user/signup/done', {timeout: 2000});
+
+      // Check success message
+      cy.get('.alert .alert-success').should('be.visible').should('contain.text', 'Your account has just been created');
     });
   });
 });

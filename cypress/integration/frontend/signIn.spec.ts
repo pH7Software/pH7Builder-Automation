@@ -27,6 +27,10 @@ describe('signIn', () => {
   });
 
   describe('success', () => {
+    beforeEach(() => {
+      createUser(registeredUser);
+    });
+
     const registeredUser = {
       email: faker.internet.email(),
       password: faker.internet.password(),
@@ -46,15 +50,16 @@ describe('signIn', () => {
       cy.get('form#form_join_user').submit();
     };
 
-    beforeEach(() => {
-      createUser(registeredUser);
-    });
-
-    it(`must create an account`, () => {
+    it('must sign-in as a user', () => {
       cy.get('[name=mail]').type(registeredUser.email);
       cy.get('[name=password]').type(registeredUser.password);
       cy.get(formElement).submit();
+
+      // Check expected redirection
       cy.location().should('eq', 'user/account/index', {timeout: 2000});
+
+      // Check success message
+      cy.get('.alert .alert-success').should('be.visible').should('contain.text', 'You are successfully logged in');
     });
   });
 })
