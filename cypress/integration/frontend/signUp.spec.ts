@@ -49,7 +49,9 @@ describe('signUp', () => {
       cy.location().should('eq', 'user/signup/done', {timeout: 2000});
 
       // Check success message
-      cy.get('.alert .alert-success').should('be.visible').should('contain.text', 'Your account has just been created');
+      cy.get('.alert .alert-success')
+        .should('be.visible')
+        .should('contain.text', 'Your account has just been created');
     });
   });
 });
