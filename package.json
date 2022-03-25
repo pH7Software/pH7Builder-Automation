@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "cypress": "^9.5.2",
+    "faker": "^6.6.6"
+  },
+  "homepage": "https://github.com/pH7Software/pH7Builder-Automation",
+  "bugs": {
+    "url": "https://github.com/pH7Software/pH7Builder-Automation/issues"
+  }
+}
