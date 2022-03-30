@@ -1,9 +1,10 @@
 # Dependencies
-node_modules
+/node_modules
 
 # IDE
-.idea
+/.idea
 
 # Misc
+/videos
 .eslintrc.js
 .DS_Store*

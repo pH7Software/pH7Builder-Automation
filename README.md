@@ -1,6 +1,6 @@
 # pH7Builder Automation Tests 🤖
 
-A library for testing [pH7Builder](https://github.com/pH7Software/pH7-Social-Dating-CMS), the #1 online open source
+A library for integration testing [pH7Builder](https://github.com/pH7Software/pH7-Social-Dating-CMS), the #1 online open source
 social dating builder 😍
 
 ## 📖 Table of Contents
@@ -16,11 +16,15 @@ The installation is straight forward. First, you will need to have `npm` install
 
 Then, run
 ```console
+cypress run
+
 npm ci
 ```
 
-Cypress GUI dialog will show up and you will be able to run any tests showing up in there 🙂
+Cypress GUI dialog will show up, and you will be able to run any tests showing up in there 🙂
 
+
+Further information can be found on the official [Cypress website](https://cypress.io).
 
 ## 🧑‍🍳 Author
 
