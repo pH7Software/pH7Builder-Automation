@@ -33,7 +33,7 @@ challenges and leading teams.
 
 [![Pierre-Henry Soria](https://s.gravatar.com/avatar/a210fe61253c43c869d71eaed0e90149?s=200)](https://ph7.me 'Pierre-Henry Soria resume')
 
-[![@phenrysay][twitter-image]](https://twitter.com/phenrysay) [![pH-7][github-image]](https://github.com/pH-7)
+[![@phenrysay][twitter-image]](https://twitter.com/phenrysay "Follow Me on Twitter") [![pH-7][github-image]](https://github.com/pH-7 "Follow Me GitHub @pH-7")
 
 ## ⚖️ License
 
